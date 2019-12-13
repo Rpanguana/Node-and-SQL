@@ -7,20 +7,6 @@ const pool = new Pool({
   port: 5432
 });
 
-// const helloWorld = () => {
-//   pool.query(
-//     "SELECT $1::text as message",
-//     ["Hello world!"],
-//     (error, results) => {
-//       if (error) {
-//         throw error;
-//       }
-
-//       console.log(results.rows);
-//     }
-//   );
-// };
-
 function visitors(){
 
     var queryString = `CREATE TABLE visitors (id SERIAL PRIMARY KEY,
@@ -41,7 +27,7 @@ function visitors(){
 
 function addNewVisitor(){
 
-    var queryString = `INSERT INTO Visitors(name, age, dateOfVisit, timeOfVisit, Assistor, comments) VALUES('Ndinga Gaba', 43, '2019-11-29', '09:00:43', 'Sister Dizzy', 'The service was poor')`;
+var queryString = `INSERT INTO Visitors(name, age, dateOfVisit, timeOfVisit, Assistor, comments) VALUES('Ndinga gaba', 43, '2019-11-29', '09:00:43', 'Sister Dizzy', 'The service was poor')`;
 
     pool.query(queryString, (error, results) => {
         console.log(error, results);
@@ -60,6 +46,52 @@ function showVisitors(){
     })
 }
 
+function deleteVisitor(idNum){
+    var queryString = `DELETE FROM visitors WHERE id = ${idNum};`
+
+    pool.query(queryString, (error, results) => {
+        console.log(error, results);
+        pool.end();
+        
+    })
+}
+
+function updateVisitor(setStatement, idNum){ 
+    var queryString = `UPDATE visitors SET ${setStatement} WHERE id = ${idNum};`
+
+    pool.query(queryString, (error, results) => {
+        console.log(error, results);
+        pool.end();
+        
+    })
+}
+
+function selectVisitor(idNum){ 
+    var queryString = `SELECT * FROM visitors WHERE id = ${idNum};`
+
+
+    pool.query(queryString, (error, results) => {
+        console.log(error, results);
+        pool.end();
+        
+    })
+}
+
+function deleteAllVisitors(){
+    var queryString = `DELETE FROM visitors;`
+
+    pool.query(queryString, (error, results) => {
+        console.log(error, results);
+        pool.end();
+        
+    })
+}
+
+
 // visitors();
 // addNewVisitor();
-showVisitors();
+// showVisitors();
+// deleteVisitor(1);
+// updateVisitor();  *//*
+// selectVisitor(2);
+// deleteAllVisitors();
