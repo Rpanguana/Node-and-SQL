@@ -1,0 +1,27 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": ".",
+  "main": "node.js",
+  "scripts": {
+    "start": "node express",
+    "test": "nodemon express"
+  },
+  "author": "Rulani-Panguana",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rpanguana/Node-and-SQL.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rpanguana/Node-and-SQL/issues"
+  },
+  "homepage": "https://github.com/Rpanguana/Node-and-SQL#readme"
+}

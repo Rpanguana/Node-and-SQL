@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="../prospective_students.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2> Hi There! Please fill in the form</h2>
+
+    <form action='addNewVisitor()' method="POST">
+        <fieldset>
+          <legend>Visitors information:</legend>
+          Visitors full Name:<br>
+          <input id="fullname" type="text" name="fullname" required><br><br>
+          Assistants name:<br>
+          <input id="assistname" type="text" name="Assistants-name" required><br><br>
+          Age:<br>
+          <input id="age" type="number" name="Age" required><br><br>
+          Date:<br>
+          <input id="dateOfVisit" type="date" id="start" name="trip-start"
+            value="2018-07-22"
+            min="2018-01-01" max="2022-12-31" required><br><br>
+          Time:<br>
+          <input id="timeOfVisit" type="time" id="appt" name="appt"
+            min="09:00" max="18:00" required>
+          <small>Office hours are 9am to 6pm</small><br><br>
+          Comment:<br>
+          <input id="Comment" type="comment" name="comment" placeholder="your comment here!" required><br><br>
+          <input  type="submit" value="Submit">
+        </fieldset>
+      </form>
+</body>
+</html>

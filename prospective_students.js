@@ -7,7 +7,7 @@ const pool = new Pool({
   port: 5432
 });
 
-function visitors(){
+function visitors(){ /* create a new Visitors Table on SQL*/
 
     var queryString = `CREATE TABLE visitors (id SERIAL PRIMARY KEY,
         name VARCHAR(30),
@@ -25,9 +25,10 @@ function visitors(){
     })
 }
 
-function addNewVisitor(){
+function addNewVisitor(fullname, assistname, age, dateOfVisit, timeOfVisit, comment){ /* create a new visitor and upload to the database */ 
 
-var queryString = `INSERT INTO Visitors(name, age, dateOfVisit, timeOfVisit, Assistor, comments) VALUES('Ndinga gaba', 43, '2019-11-29', '09:00:43', 'Sister Dizzy', 'The service was poor')`;
+var queryString = `INSERT INTO Visitors(fullname, age, dateOfVisit, timeOfVisit, Assistor, comments)
+VALUES(${fullname}, ${age}, ${assistname}, ${dateOfVisit}, ${timeOfVisit}, ${comment})`;
 
     pool.query(queryString, (error, results) => {
         console.log(error, results);
@@ -36,7 +37,7 @@ var queryString = `INSERT INTO Visitors(name, age, dateOfVisit, timeOfVisit, Ass
     })
 }
 
-function showVisitors(){
+function showVisitors(){ /* select to view all visitors to show information of */ 
     var queryString = `SELECT * FROM visitors;`
 
     pool.query(queryString, (error, results) => {
@@ -46,7 +47,7 @@ function showVisitors(){
     })
 }
 
-function deleteVisitor(idNum){
+function deleteVisitor(idNum){ /* delete specified visitor using idNumber */
     var queryString = `DELETE FROM visitors WHERE id = ${idNum};`
 
     pool.query(queryString, (error, results) => {
@@ -56,7 +57,7 @@ function deleteVisitor(idNum){
     })
 }
 
-function updateVisitor(setStatement, idNum){ 
+function updateVisitor(setStatement, idNum){ /* update visitor information using specific fields and their inputs*/
     var queryString = `UPDATE visitors SET ${setStatement} WHERE id = ${idNum};`
 
     pool.query(queryString, (error, results) => {
@@ -66,7 +67,7 @@ function updateVisitor(setStatement, idNum){
     })
 }
 
-function selectVisitor(idNum){ 
+function selectVisitor(idNum){ /* select a specific visitor to view their data */
     var queryString = `SELECT * FROM visitors WHERE id = ${idNum};`
 
 
@@ -77,7 +78,7 @@ function selectVisitor(idNum){
     })
 }
 
-function deleteAllVisitors(){
+function deleteAllVisitors(){ /* delete all visitors remotely*/
     var queryString = `DELETE FROM visitors;`
 
     pool.query(queryString, (error, results) => {
@@ -87,6 +88,8 @@ function deleteAllVisitors(){
     })
 }
 
+
+// let submit = document.getElementById("submit").onclick="addNewVisitor";
 
 // visitors();
 // addNewVisitor();
