@@ -88,7 +88,7 @@ function deleteAllVisitors(){ /* delete all visitors remotely*/
     })
 }
 
-
+module.exports = addNewVisitor;
 // let submit = document.getElementById("submit").onclick="addNewVisitor";
 
 // visitors();
